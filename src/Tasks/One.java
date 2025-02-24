@@ -1,3 +1,5 @@
+package Tasks;
+
 import java.util.Scanner;
 
 public class One {
@@ -6,7 +8,7 @@ public class One {
     return max * 5;
   }
 
-  public static void main(String[] args) {
+  public static void one() {
     Scanner in = new Scanner(System.in);
     System.out.print("Input two numbers separated by space: ");
     int a = in.nextInt(); // Читаем первое число

@@ -1,3 +1,5 @@
+package Tasks;
+
 import java.util.Scanner;
 
 public class Two {
@@ -5,7 +7,7 @@ public class Two {
         return (int) ((Math.pow(a, 5) - 3.2 * b) / (1 + b));
     }
 
-    public static void main(String[] args) {
+    public static void two() {
         Scanner in = new Scanner(System.in);
         System.out.print("Input two numbers separated by space: ");
         int a = in.nextInt(); // Читаем первое число

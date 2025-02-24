@@ -1,8 +1,9 @@
-import java.util.ArrayList;
+package Tasks;
+
 import java.util.Random;
 
 public class Four {
-    public static void main(String[] args){
+    public static void four(){
         int rows = 4;
         int cols = 5;
 

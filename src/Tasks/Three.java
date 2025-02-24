@@ -1,8 +1,10 @@
+package Tasks;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Three {
-    public static void main(String[] args){
+    public static void three(){
         int size = 10;
         final int TARGET_VALUE = 5;
         int[] array = new int[size];
