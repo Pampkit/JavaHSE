@@ -1,11 +1,14 @@
 package Models;
 import java.util.*;
+import java.io.*;
 
 public class PersonalOrganizer {
     private static final ArrayList<Contact> contacts = new ArrayList<>();
     private static final ArrayList<Event> events = new ArrayList<>();
     private static final Scanner scanner = new Scanner(System.in);
     private static int contactIdCounter = 1;
+    private static final String CONTACTS_FILE = "contacts.txt";
+    private static final String EVENTS_FILE = "events.txt";
 
     public static void personalOrganizer() {
         while (true) {
@@ -14,31 +17,14 @@ public class PersonalOrganizer {
             scanner.nextLine(); // Очистка буфера
 
             switch (choice) {
-                case 1:
-                    addContact();
-                    break;
-                case 2:
-                    addEvent();
-                    break;
-                case 3:
-                    showSortedContacts();
-                    break;
-                case 4:
-                    showSortedEvents();
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    break;
-                case 9:
-                    System.out.println("Выход из программы");
-                    return;
-                default:
-                    System.out.println("Неверный выбор");
+                case 1: addContact(); break;
+                case 2: addEvent(); break;
+                case 3: showSortedContacts(); break;
+                case 4: showSortedEvents(); break;
+                case 5: saveData(); break;
+                case 6: loadData(); break;
+                case 7: System.out.println("Выход из программы"); return;
+                default: System.out.println("Неверный выбор");
             }
         }
     }
@@ -49,11 +35,9 @@ public class PersonalOrganizer {
         System.out.println("2. Добавить событие");
         System.out.println("3. Показать контакты");
         System.out.println("4. Показать события");
-        System.out.println("5. Экспорт контактов");
-        System.out.println("6. Экспорт событий");
-        System.out.println("7. Импорт контактов");
-        System.out.println("8. Импорт событий");
-        System.out.println("9. Выход");
+        System.out.println("5. Сохранить данные в файлы");
+        System.out.println("6. Загрузить данные из файлов");
+        System.out.println("7. Выход");
         System.out.print("Выберите действие: ");
     }
 
@@ -122,5 +106,9 @@ public class PersonalOrganizer {
             System.out.println(e);
         }
     }
+
+    private static void saveData() {}
+
+    private static void loadData() {}
 
 }
