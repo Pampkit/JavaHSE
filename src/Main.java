@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import Tasks.*;
+import Models.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,5 +12,8 @@ public class Main {
         Three.three();
         System.out.println("Task 4");
         Four.four();
+
+        PersonalOrganizer.personalOrganizer();
+
     }
 }

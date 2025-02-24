@@ -1,3 +1,5 @@
+package Models;
+
 public class Contact {
     // Свойства класса
     private int id;
@@ -69,7 +71,7 @@ public class Contact {
     // Переопределение метода toString()
     @Override
     public String toString() {
-        return "Contact{" +
+        return "Models.Contact{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -81,7 +83,7 @@ public class Contact {
 
     // Пример использования
     public static void main(String[] args) {
-        // Создаем объект класса Contact
+        // Создаем объект класса Models.Contact
         Contact contact = new Contact(1, "Иван", "Иванов", "ул. Ленина, д. 10", "+7 (123) 456-78-90", "Коллега по работе");
 
         // Выводим информацию о контакте
