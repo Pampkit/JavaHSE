@@ -2,6 +2,7 @@ package Models;
 import java.util.*;
 import java.io.*;
 
+
 public class PersonalOrganizer {
     private static final ArrayList<Contact> contacts = new ArrayList<>();
     private static final ArrayList<Event> events = new ArrayList<>();
@@ -107,8 +108,89 @@ public class PersonalOrganizer {
         }
     }
 
-    private static void saveData() {}
+    private static void saveData() {
+        System.out.println("Что выгрузить:");
+        System.out.println("1. Контакты");
+        System.out.println("2. События");
+        int type = scanner.nextInt();
 
-    private static void loadData() {}
+        if (type == 1) {
+            saveToFile(CONTACTS_FILE, contacts);
+            System.out.println("Контакты сохранены в " + CONTACTS_FILE);
+        } else if (type == 2) {
+            saveToFile(EVENTS_FILE, events);
+            System.out.println("События сохранены в " + EVENTS_FILE);
+        }
+
+    }
+
+    private static <T extends CsvConvert> void saveToFile(String fileName, ArrayList<T> list) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            for (T item : list) {
+                writer.write(item.toCsv());
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Ошибка при записи в файл: " + e.getMessage());
+        }
+    }
+
+    private static void loadData() {
+        System.out.println("Что загрузить:");
+        System.out.println("1. Контакты");
+        System.out.println("2. События");
+        int type = scanner.nextInt();
+
+        if (type == 1) {
+            updateContactsFromFile(CONTACTS_FILE, contacts);
+            System.out.println("Контакты выгружены");
+        } else if (type == 2) {
+            updateEventsFromFile(EVENTS_FILE, events);
+            System.out.println("События выгружены");
+        }
+    }
+
+    private static void updateContactsFromFile(String fileName, ArrayList<Contact> contacts) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length == 6) {
+                    int id = Integer.parseInt(parts[0]);
+                    contacts.add(new Contact(id, parts[1], parts[2], parts[3], parts[4], parts[5]));
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Ошибка при чтении файла: " + e.getMessage());
+        }
+    }
+
+
+    private static void updateEventsFromFile(String fileName, ArrayList<Event> events) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length != 0) {
+                    int type = Integer.parseInt(parts[0]);
+                    if (type == 1) {
+                        if (parts.length == 6) {
+                            events.add(new Birthday(parts[1], parts[2], parts[3], parts[4], Integer.parseInt(parts[5])));
+                        }
+                    } else if (type == 2) {
+                        if (parts.length == 5) {
+                            events.add(new Meeting(parts[1], parts[2], parts[3], parts[4]));
+                        }
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Ошибка при чтении файла: " + e.getMessage());
+        }
+    }
+
+
+
+
 
 }

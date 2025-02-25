@@ -1,6 +1,6 @@
 package Models;
 
-public class Event {
+public class Event implements CsvConvert {
     private String date;
     private String time;
 
@@ -18,5 +18,10 @@ public class Event {
     @Override
     public String toString() {
         return "Дата: " + date + ", Время: " + time;
+    }
+
+    @Override
+    public String toCsv() {
+        return date + "," + time;
     }
 }

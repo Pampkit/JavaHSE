@@ -27,4 +27,9 @@ public class Birthday extends Event{
                 "\nМесто: " + location +
                 "\nВозраст: " + age;
     }
+
+    public String toCsv() {
+        return super.toCsv() + "," + celebrant + "," + location + "," + age;
+    }
+
 }

@@ -22,4 +22,8 @@ public class Meeting extends Event{
                 "\nС кем: " + person +
                 "\nМесто: " + location;
     }
+
+    public String toCsv() {
+        return super.toCsv() + "," + person + "," + location;
+    }
 }

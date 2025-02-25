@@ -1,6 +1,6 @@
 package Models;
 
-public class Contact {
+public class Contact implements CsvConvert {
     // Свойства класса
     private int id;
     private String firstName;
@@ -68,7 +68,6 @@ public class Contact {
         this.note = note;
     }
 
-    // Переопределение метода toString()
     @Override
     public String toString() {
         return "Models.Contact{" +
@@ -81,12 +80,8 @@ public class Contact {
                 '}';
     }
 
-    // Пример использования
-    public static void main(String[] args) {
-        // Создаем объект класса Models.Contact
-        Contact contact = new Contact(1, "Иван", "Иванов", "ул. Ленина, д. 10", "+7 (123) 456-78-90", "Коллега по работе");
-
-        // Выводим информацию о контакте
-        System.out.println(contact);
+    @Override
+    public String toCsv() {
+        return id + "," + firstName + "," + lastName + "," + address + "," + phone + "," + note;
     }
 }
